@@ -1,3 +1,3 @@
-#ignore venv
+
 venv/
-intelligence-service/training/sudoku-3m.csv
+sudoku-3m.csv
