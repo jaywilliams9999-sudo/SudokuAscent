@@ -13,9 +13,7 @@ def string_to_array(sudoku_str):
     #replace dots with zeros if the dataset uses them
     clean_str = sudoku_str.replace('.', '0')
 
-    return {
-        np.array([int(c) for c in clean_str]).reshape((9, 9))
-    }
+    return np.array([int(c) for c in clean_str]).reshape((9, 9))
 
 def process_dataset(input_csv, output_csv, sample_size = 50000):
     print(f"Loading {sample_size} puzzles from {input_csv}...")
@@ -36,7 +34,7 @@ def process_dataset(input_csv, output_csv, sample_size = 50000):
         features = extract_all_features(board)
 
         #add the target
-        features['difficulty_rating'] = row['difficulty']
+        features['difficulty'] = row['difficulty']
 
         extracted_data.append(features)
 
@@ -51,8 +49,9 @@ def process_dataset(input_csv, output_csv, sample_size = 50000):
 
 if __name__ == "__main__":
     #paths may need updating
-    INPUT = "../training/sudoku-3m.csv"
-    OUTPUT = "processed_sudoku.csv"
+    base_dir = os.path.dirname(os.path.abspath(__file__))
+    INPUT = os.path.join(base_dir, "sudoku-3m.csv")
+    OUTPUT = os.path.join(base_dir, "processed_sudoku.csv")
 
     if os.path.exists(INPUT):
         process_dataset(INPUT, OUTPUT)

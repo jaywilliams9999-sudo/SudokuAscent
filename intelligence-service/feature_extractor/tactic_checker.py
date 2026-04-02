@@ -17,7 +17,10 @@ def check_tactics(board_array):
     #note: different libraries provide different levels of detail
     #the library we are using is a good baseline 
     #but for specific tactics we look at the complexity of the solution path
-    lib_diff = puzzle.difficulty()
+    # py-sudoku's .difficulty() is a generation method. To evaluate difficulty under this library, 
+    # we calculate the proportion of empty cells, which correlates with its difficulty index (0 to 1).
+    empty_cells = sum(row.count(None) for row in board_list)
+    lib_diff = empty_cells / 81.0
 
     #create a tactic profile
     #map the library's float difficulty to specific thresholds that represent when certain tactics usually appear

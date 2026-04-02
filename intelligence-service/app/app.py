@@ -12,7 +12,8 @@ from feature_extractor import extract_all_features
 app = FastAPI(title="Sudoku Ascent Intelligence Service")
 
 #load the trained model
-MODEL_PATH = "../models/model.pkl"
+base_dir = os.path.dirname(os.path.abspath(__file__))
+MODEL_PATH = os.path.abspath(os.path.join(base_dir, "..", "models", "model_new.pkl"))
 if os.path.exists(MODEL_PATH):
     model = joblib.load(MODEL_PATH)
 else:
