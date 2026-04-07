@@ -1,0 +1,11 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: sudoku-backend
+
+# URL for the Python ML Intelligence Service
+intelligence:
+  service:
+    url: http://localhost:8000
