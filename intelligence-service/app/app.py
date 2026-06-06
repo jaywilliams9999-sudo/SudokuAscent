@@ -18,7 +18,7 @@ if os.path.exists(MODEL_PATH):
     model = joblib.load(MODEL_PATH)
 else:
     model = None
-    print("Warning: Model not found. Run the training script first you goofball.")
+    print("Warning: ML Model not found. Please execute the training script to generate the model artifacts before attempting predictions.")
 
 #define expected input format
 class SudokuBoard(BaseModel):
