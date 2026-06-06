@@ -1,1 +1,21 @@
+# Python
 venv/
+__pycache__/
+*.pyc
+.env
+
+# Node
+node_modules/
+dist/
+build/
+
+# Java / Maven
+backend/target/
+target/
+*.class
+
+# IDE & OS
+.vscode/
+.idea/
+*.iml
+.DS_Store
