@@ -28,7 +28,7 @@ The backend enforces game rules, generates Sudoku boards using highly optimized 
 *   **`src/main/java/com/sudoku/backend/SudokuApplication.java`**: The Spring Boot initialization class and primary entry point for launching the backend server context.
 
 ### Controllers
-*   **`controller/SudokuController.java`**: The REST API surface. Defines frontend-accessible endpoints such as `/api/sudoku/validate`, `/api/sudoku/level/{difficulty}`, and `/api/sudoku/survival/next`.
+*   **`controller/SudokuController.java`**: The REST API surface. Defines frontend-accessible endpoints such as `/api/sudoku/analyze`, `/api/sudoku/solve`, `/api/sudoku/survival/next`, and `/api/sudoku/static/{levelId}`.
 
 ### DTOs (Data Transfer Objects)
 *(Found in `dto/`)*
@@ -85,7 +85,7 @@ The Python-powered AI inference microservice designed to convert naive matrices 
 *(Found in `feature_extractor/`)*
 A trained ML model needs statistical categories to measure context. These tools convert a 2D puzzle array into mathematical representations.
 *   **`basic_stats.py`**: Extracts structural statistics (e.g., cell sparsity, clustering rates, numeric distribution variances).
-*   **`tactic_checker.py`**: Performs programmatic verification across logic boundaries to map implicit solving methods. Calculates exactly how often tricks like "Naked Singles", "Hidden Pairs", or "X-Wings" are forced to be utilized if a player relies exclusively on logic.
+*   **`tactic_checker.py`**: Evaluates the board's sparsity to generate broad logical difficulty flags (basic, advanced, extreme logic).
 
 ### Models & Training
 *(Found in `models/` and `training/`)*

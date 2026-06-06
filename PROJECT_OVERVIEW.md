@@ -14,7 +14,7 @@ This project solves two primary challenges in modern puzzle applications:
 
 * **Survival Mode:** An infinite loop of Sudoku puzzles that scales difficulty mathematically. The AI evaluates candidate boards and selects the optimal puzzle to ensure a linear, tailored difficulty increase without regression.
 * **Intelligent Puzzle Analysis & Inference:** The backend communicates with a dedicated python microservice that evaluates board mechanics using a machine learning model trained on a 3-million puzzle dataset.
-* **Tactic Detection & "Check Mistakes":** Automatically detects the player's solving tactics and provides instant, matrix-validated feedback to check for errors.
+* **"Check Mistakes":** Provides instant, matrix-validated feedback to check for player errors.
 * **Premium User Interface:** Built with React, the frontend focuses on reactive UX. It features locking win animations (e.g., 2.8s cascading green validations), asynchronous processing screens, and structural glassmorphism to look modern and engaging.
 
 ---

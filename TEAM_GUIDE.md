@@ -1,6 +1,6 @@
 # SudokuAscent Team Guide
 
-**Branch:** DevOpsJay
+**Branch:** main
 **Last updated:** March 23, 2026
 
 ---
@@ -15,7 +15,7 @@ To fix this, the following steps were performed:
 
 1. **Initialized Git LFS** and configured it to track all `*.csv` files (see `.gitattributes`).
 2. **Ran `git lfs migrate import`** to rewrite the entire branch history so that `sudoku-3m.csv` (and any other CSV files) are stored as LFS objects instead of regular git blobs.
-3. **Force-pushed** the rewritten `DevOpsJay` branch to the remote.
+3. **Force-pushed** the rewritten `main` branch to the remote.
 
 **IMPORTANT: Because history was rewritten, every team member must re-clone or reset their local copy** (see instructions below).
 
@@ -76,8 +76,8 @@ git lfs install
 git clone https://github.com/jaywilliams9999-sudo/SudokuAscent.git
 cd SudokuAscent
 
-# 3. Switch to the DevOpsJay branch
-git checkout DevOpsJay
+# 3. Switch to the main branch
+git checkout main
 
 # 4. Verify LFS files were downloaded
 git lfs ls-files
@@ -85,7 +85,7 @@ git lfs ls-files
 
 ### Option B - You Already Have a Clone
 
-Because the branch history was rewritten by the LFS migration, your local `DevOpsJay` branch is now out of sync. **Do not try to merge or rebase.** Reset instead:
+Because the branch history was rewritten by the LFS migration, your local `main` branch is now out of sync. **Do not try to merge or rebase.** Reset instead:
 
 ```bash
 # 1. Install Git LFS if you have not already
@@ -95,8 +95,8 @@ git lfs install
 git fetch origin
 
 # 3. Hard-reset your local branch to match the remote
-git checkout DevOpsJay
-git reset --hard origin/DevOpsJay
+git checkout main
+git reset --hard origin/main
 
 # 4. Pull LFS objects
 git lfs pull
@@ -112,7 +112,7 @@ git lfs ls-files
 Once your local copy is up to date:
 
 ```bash
-# Create and switch to your new branch from DevOpsJay
+# Create and switch to your new branch from main
 git checkout -b YourName-feature-name
 
 # Make your changes
