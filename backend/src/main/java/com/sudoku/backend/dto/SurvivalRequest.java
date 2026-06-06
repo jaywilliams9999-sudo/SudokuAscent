@@ -11,4 +11,5 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class SurvivalRequest {
     private double previousDifficulty;
+    private int level;
 }

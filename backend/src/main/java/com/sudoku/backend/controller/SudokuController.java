@@ -8,6 +8,7 @@ import com.sudoku.backend.dto.SurvivalResponse;
 import com.sudoku.backend.service.IntelligenceServiceClient;
 import com.sudoku.backend.service.SudokuSolverService;
 import com.sudoku.backend.service.SurvivalModeService;
+import com.sudoku.backend.service.StaticLevelService;
 import java.util.ArrayList;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,12 +24,14 @@ public class SudokuController {
     private final IntelligenceServiceClient intelligenceClient;
     private final SudokuSolverService solverService;
     private final SurvivalModeService survivalModeService;
+    private final StaticLevelService staticLevelService;
 
     @Autowired
-    public SudokuController(IntelligenceServiceClient intelligenceClient, SudokuSolverService solverService, SurvivalModeService survivalModeService) {
+    public SudokuController(IntelligenceServiceClient intelligenceClient, SudokuSolverService solverService, SurvivalModeService survivalModeService, StaticLevelService staticLevelService) {
         this.intelligenceClient = intelligenceClient;
         this.solverService = solverService;
         this.survivalModeService = survivalModeService;
+        this.staticLevelService = staticLevelService;
     }
 
     @PostMapping("/analyze")
@@ -126,12 +129,22 @@ public class SudokuController {
     @PostMapping("/survival/next")
     public ResponseEntity<SurvivalResponse> getNextSurvivalBoard(@RequestBody SurvivalRequest request) {
         try {
-            SurvivalResponse response = survivalModeService.getNextSurvivalBoard(request.getPreviousDifficulty());
+            SurvivalResponse response = survivalModeService.getNextSurvivalBoard(request.getPreviousDifficulty(), request.getLevel());
             if (response != null) {
                 return ResponseEntity.ok(response);
             } else {
                 return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
             }
+        } catch (Exception ex) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+        }
+    }
+
+    @GetMapping("/static/{levelId}")
+    public ResponseEntity<SurvivalResponse> getStaticBoard(@PathVariable int levelId) {
+        try {
+            SurvivalResponse response = staticLevelService.getStaticLevel(levelId);
+            return ResponseEntity.ok(response);
         } catch (Exception ex) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
         }
