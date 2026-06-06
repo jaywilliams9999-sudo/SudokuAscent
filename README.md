@@ -1,10 +1,10 @@
 # SudokuAscent
 
-SudokuAscent is a full-stack web application that uses machine learning to help users solve and improve at Sudoku puzzles. The platform analyzes puzzle difficulty, detects solving tactics, and provides intelligent hints powered by a trained AI model.
+SudokuAscent is a full-stack web application that uses machine learning to help users solve and improve at Sudoku puzzles. The platform automatically evaluates and scales puzzle difficulty while dynamically detecting solving tactics in real time.
 
 ## Features
 
-- **Intelligent Puzzle Analysis** - An ML-powered service that evaluates puzzle difficulty and recommends solving strategies based on a dataset of 3 million Sudoku puzzles.
+- **Intelligent Puzzle Analysis** - An ML-powered service that precisely evaluates and dynamically scales puzzle difficulty based on a trained dataset of 3 million Sudoku puzzles.
 - **Tactic Detection** - Automatically identifies applicable Sudoku techniques such as naked singles, hidden pairs, and other common strategies.
 - **Feature Extraction** - Extracts statistical features from puzzles to feed into the prediction model.
 - **Modern Web Interface** - A React-based frontend for interacting with puzzles in the browser.
